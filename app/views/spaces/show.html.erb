@@ -1,6 +1,8 @@
 <div class="container">
 
 
+
+
 <div id="space-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <!-- <ol class="carousel-indicators">
@@ -35,7 +37,12 @@
 <% end %>
 </div> <!-- Carousel -->
 
+<%= month_calendar do |date| %>
+<%= content_tag :div, class: "calendar-day", data: {date: date} do %>
 
+<%= date.day %>
+<% end %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @space.name %>
