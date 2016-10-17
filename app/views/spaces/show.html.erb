@@ -1,0 +1,77 @@
+<div class="container">
+
+
+<div id="space-carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <!-- <ol class="carousel-indicators">
+    <li data-target="#space-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#space-carousel" data-slide-to="1"></li>
+    <li data-target="#space-carousel" data-slide-to="2"></li>
+  </ol> -->
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <% @space.images.each_with_index do |image, i| %>
+      <% if i == 0%>
+        <div class="item active">
+      <% else%>
+        <div class="item">
+      <% end %>
+      <%= image_tag(image)%>
+      <div class="carousel-caption">
+      	<h3>Caption Text</h3>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<!-- Controls -->
+<% if @space.images.count !=1 %>
+  <a class="left carousel-control" href="#space-carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#space-carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+<% end %>
+</div> <!-- Carousel -->
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @space.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @space.description %>
+</p>
+
+<p>
+  <strong>Wifi:</strong>
+  <%= @space.wifi %>
+</p>
+
+<p>
+  <strong>Food:</strong>
+  <%= @space.food %>
+</p>
+
+<p>
+  <strong>Meetroom:</strong>
+  <%= @space.meetroom %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @space.price %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @space.location %>
+</p>
+
+<%= link_to 'Edit', edit_space_path(@space) %> |
+<%= link_to 'Back', spaces_path %>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

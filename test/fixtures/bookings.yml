@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  space: one
+  worker: one
+  date: 2016-10-17
+
+two:
+  space: two
+  worker: two
+  date: 2016-10-17
