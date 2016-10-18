@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @space = Space.new
+    @space = Space.find(params[:space])
     # @booking = @calendar.bookings.new(booking_params)
   end
 

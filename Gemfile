@@ -20,7 +20,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'devise'
 gem 'bootstrap-sass'
 gem "simple_calendar", "~> 2.0"
-
+gem 'stripe'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
