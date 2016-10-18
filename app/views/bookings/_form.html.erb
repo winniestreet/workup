@@ -11,20 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :space_id %>
-    <%= f.text_field :space_id %>
-  </div>
 
-  <div class="field">
-    <%= f.label :worker_id %>
-    <%= f.text_field :worker_id %>
-  </div>
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date %>
-  </div>
+  <%= f.hidden_field :space_id, :value => params[:space]  %>
+  <%= f.hidden_field :date, :value => params[:date] %>
 
   <div class="actions">
     <%= f.submit %>

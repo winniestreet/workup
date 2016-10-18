@@ -37,11 +37,27 @@
 <% end %>
 </div> <!-- Carousel -->
 
-<%= month_calendar do |date| %>
-<%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+<% if current_worker %>
+ <%= month_calendar do |date| %>
+ <!-- events: @bookings do |date, bookings| -->
+  <!-- <a href="<%#= new_booking_path(date: date) %>"> -->
+    <%= content_tag :div, class: "new-booking", data: {date: date} do %>
 
-<%= date.day %>
+      <%= date.day %>
+
+      <!-- <% @bookings.each do |booking| %>
+        <div class="single_event">
+          <%= link_to new_booking_path(booking), data: {space_id: @space.id} %>
+        </div>
+      <% end %> -->
+      <% end %>
+    <% end %>
+  <!-- </a> -->
 <% end %>
+
+<% else %>
+<%= month_calendar do |date| %>
+<%= date.day %>
 <% end %>
 <p>
   <strong>Name:</strong>
@@ -81,4 +97,11 @@
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  var date = $(".new-booking").data("date").replace(/\"/g, "");
+  $(".new-booking").bind("click", function() {
+    location.href = "/bookings/new?date=" + date + "&space=" + <%= @space.id %>
+  });
+});
+</script>

@@ -30,9 +30,4 @@
       <% end %>
     </tbody>
   </table>
-  <script>
-  (".calendar-day").on "click",
-    date = $(this).data("date")
-    location.href = "/bookings/new?booking[day]=#{date}"
-  </script>
 </div>

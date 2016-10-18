@@ -15,6 +15,8 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @space = Space.new
+    # @booking = @calendar.bookings.new(booking_params)
   end
 
   # GET /bookings/1/edit
@@ -25,7 +27,9 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    # @booking = @calendar.bookings.new(booking_params)
+    @booking.worker = current_worker
+    # @space = Space.new
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
