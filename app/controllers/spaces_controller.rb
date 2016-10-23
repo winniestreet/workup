@@ -5,7 +5,11 @@ class SpacesController < ApplicationController
   # GET /spaces
   # GET /spaces.json
   def index
+    if params[:location]
+        @spaces = Space.near(params[:location], 10)
+    else
     @spaces = Space.all
+  end
   end
 
   # GET /spaces/1
@@ -71,7 +75,7 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:owner_id, :description, :wifi, :food, :meetroom, :price, :approved, :location, {images: []}, :name)
+      params.require(:space).permit(:owner_id, :description, :wifi, :food, :meetroom, :price, :approved, :location, {images: []}, :name, :number, :street, :suburb, :postcode, :state, :country)
     end
 
     def require_owner

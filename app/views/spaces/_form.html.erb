@@ -17,6 +17,36 @@
   </div>
 
   <div class="field">
+    <%= f.label :number %>
+    <%= f.text_area :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %>
+    <%= f.text_area :street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suburb %>
+    <%= f.text_area :suburb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %>
+    <%= f.text_field :state, collection: ['NSW', 'QLD', 'VIC', 'WA', 'SA', 'NT'], as: :radio_buttons%>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_area :postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.text_field :country, priority: ['Australia', 'New Zealand'] %>
+  </div>
+
+  <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>

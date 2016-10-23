@@ -18,6 +18,21 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.div {
 
+ .navbar-default {
+   z-index: 5;
+   margin: 0;
+   height: 10vh;
+   font-size: 30px;
+   font-family: 'Raleway', sans-serif;
+
+   }
+.navbar-default .navbar-nav > li > a {
+    color: black;
+}
+ .navbar-default .navbar-collapse {
+    overflow-x: visible;
+  }
+.cards {
+  margin-bottom: 150px;
 }

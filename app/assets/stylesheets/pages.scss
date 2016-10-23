@@ -1,3 +1,96 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homeCarousel.carousel-inner {
+  height: 90vh;
+}
+
+.homewell {
+  position:absolute;
+  z-index: 6;
+  width: 100%;
+  margin-top:40vh;
+  text-align:center;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+}
+.icons{
+  text-align: center;
+  margin-bottom: 20vh;
+
+}
+.fa {
+  width: 20vh;
+  height: auto;
+}
+div.container.howitworks {
+  text-align: center;
+  position:absolute;
+  width:100vw;
+  font-family: 'Raleway', sans-serif;
+
+}
+.summary{
+  margin-bottom: 10vh;
+}
+.style-image{
+  width:100%;
+  height:100%;
+}
+.box{
+  width: 280px;
+  height:280px;
+}
+button.btn.btn-default a.btn.btn-default{
+  border-color: grey;
+  margin-bottom: 20px;
+  border-radius: 0px;
+}
+
+.ul {
+  list-style: none;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  margin-top: 50px;
+}
+.space_register {
+  text-align: justify;
+}
+
+.footer {
+  width: 100%;
+  background-color: #9494b8;
+  z-index: 10;
+  height: 40vh;
+}
+ul, ol {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    text-align: justify;
+    font-size: 30px;
+}
+
+a:-webkit-any-link {
+    color: pink;
+    text-decoration: none;
+    cursor: auto;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+  color: grey;
+}
+.card-block{
+  background-color:  #f0f0f5;
+
+}
+.card-text {
+  margin-bottom: 10px;
+}
+a.btn.btn-default{
+  margin-bottom: 20px;
+}

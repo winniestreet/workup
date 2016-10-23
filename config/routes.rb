@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   resources :bookings
   resources :spaces
   resources :charges
+  post '/thankyou', to: 'charges#create'
 
   root 'pages#index'
   get '/login' => 'pages#login'
-  get '/signup', to: 'pages#signup'
+  get '/workersignup', to: 'pages#workersignup'
+  get '/ownersignup', to: 'pages#ownersignup'
 
   devise_for :owners
   devise_for :workers

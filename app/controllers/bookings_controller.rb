@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     # @space = Space.new
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to new_charge_path(booking_id: @booking.id), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }

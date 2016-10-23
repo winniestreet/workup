@@ -39,26 +39,16 @@
 
 <% if current_worker %>
  <%= month_calendar do |date| %>
- <!-- events: @bookings do |date, bookings| -->
-  <!-- <a href="<%#= new_booking_path(date: date) %>"> -->
-    <%= content_tag :div, class: "new-booking", data: {date: date} do %>
-
+    <%= content_tag :div, class: "day", data: {date: date} do %>
       <%= date.day %>
-
-      <!-- <% @bookings.each do |booking| %>
-        <div class="single_event">
-          <%= link_to new_booking_path(booking), data: {space_id: @space.id} %>
-        </div>
-      <% end %> -->
-      <% end %>
     <% end %>
-  <!-- </a> -->
+  <% end %>
+<% else %>
+  <%= month_calendar do |date| %>
+  <%= date.day %>
+  <% end %>
 <% end %>
 
-<% else %>
-<%= month_calendar do |date| %>
-<%= date.day %>
-<% end %>
 <p>
   <strong>Name:</strong>
   <%= @space.name %>
@@ -99,9 +89,38 @@
 </div>
 <script>
 $(document).ready(function(){
-  var date = $(".new-booking").data("date").replace(/\"/g, "");
-  $(".new-booking").bind("click", function() {
+  $('.day').click(function () {
+    var date = $(this).attr('data-date').replace(/\"/g, "");
     location.href = "/bookings/new?date=" + date + "&space=" + <%= @space.id %>
-  });
+  })
 });
+
 </script>
+<div class=well>
+<%= bookings = @space.bookings.select{ |look| look.date == Date.today } %>
+<%= bookings.each do |now| %>
+<%= now.worker.firstname %>
+<%= image_tag(now.worker.photo) %>
+<%end%>
+</div>
+<div id="map"></div>
+<script>
+      function initMap() {
+        var myLatLng = {lat: <%= @space.latitude %>, lng: <%= @space.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '<%= @space.name %>'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwri5aJWdAdV0pt265oqOJKHiGlOtjmUo&callback=initMap"
+  async defer>
+</script>
+</div>
