@@ -9,6 +9,8 @@ class Space < ApplicationRecord
   geocoded_by :full_street_address
 
   after_validation :geocode
+  attr_accessor :country_code
+
 
   def full_street_address
     [number, street, suburb, state, postcode, country].compact.join(',')

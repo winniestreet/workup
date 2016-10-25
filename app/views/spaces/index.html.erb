@@ -2,6 +2,7 @@
 <div class="container howitworks">
   <% @spaces.each do |space| %>
   <div class="row cards">
+    <div class="card">
     <div class="card col-xs-12 col-sm-4 col-sm-offset-1 box">
       <%= image_tag(space.images.first, class: "style-image card-img-top")%>
         <div class="card-block">
@@ -13,9 +14,9 @@
           <button type="button" class="btn btn-default" style="margin-bottom: 50px;">
           <%= link_to('Book!', space) %>
           </button>
+        </div>
     </div>
   </div>
-  <% end %>
-  <%= link_to 'New Space', new_space_path %>
-
-</div>
+    <% end %>
+  </div>
+<%= link_to 'New Space', new_space_path %>

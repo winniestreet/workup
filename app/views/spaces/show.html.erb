@@ -1,17 +1,12 @@
 <div class="container">
 
+  <%= @space.bookings.each do |booking| %>
+  <%= booking.worker.email %>
+  <%end%>
 
 
 
 <div id="space-carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <!-- <ol class="carousel-indicators">
-    <li data-target="#space-carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#space-carousel" data-slide-to="1"></li>
-    <li data-target="#space-carousel" data-slide-to="2"></li>
-  </ol> -->
-
-  <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <% @space.images.each_with_index do |image, i| %>
       <% if i == 0%>
@@ -19,10 +14,7 @@
       <% else%>
         <div class="item">
       <% end %>
-      <%= image_tag(image)%>
-      <div class="carousel-caption">
-      	<h3>Caption Text</h3>
-      </div>
+      <%= image_tag(image, style: "width: 100%; height: auto")%>
     </div>
     <% end %>
   </div>
@@ -37,6 +29,16 @@
 <% end %>
 </div> <!-- Carousel -->
 
+<div class=well>
+<%= bookings = @space.bookings.select{ |look| look.date == Date.today } %>
+<%= bookings.each do |now| %>
+<%= now.worker.firstname %>
+<%= image_tag(now.worker.photo) %>
+<%end%>
+</div>
+
+<div class="row">
+<div class="col-md-5">
 <% if current_worker %>
  <%= month_calendar do |date| %>
     <%= content_tag :div, class: "day", data: {date: date} do %>
@@ -48,7 +50,9 @@
   <%= date.day %>
   <% end %>
 <% end %>
+</div>
 
+<div class="col-md-5 col-md-offset-1">
 <p>
   <strong>Name:</strong>
   <%= @space.name %>
@@ -87,6 +91,10 @@
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>
 </div>
+</div>
+</div>
+
+
 <script>
 $(document).ready(function(){
   $('.day').click(function () {
@@ -94,15 +102,8 @@ $(document).ready(function(){
     location.href = "/bookings/new?date=" + date + "&space=" + <%= @space.id %>
   })
 });
-
 </script>
-<div class=well>
-<%= bookings = @space.bookings.select{ |look| look.date == Date.today } %>
-<%= bookings.each do |now| %>
-<%= now.worker.firstname %>
-<%= image_tag(now.worker.photo) %>
-<%end%>
-</div>
+
 <div id="map"></div>
 <script>
       function initMap() {

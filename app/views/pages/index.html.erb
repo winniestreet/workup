@@ -1,5 +1,4 @@
 
-
 <div id="homeCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner homeCarousel" role="listbox">
     <div class="item active">
@@ -49,16 +48,25 @@
             <p> about growing </p>
         </div>
   </div>
+
   <div class="row cards">
-    <div class="card col-xs-12 col-sm-3 box">
-      <%= image_tag("redresto.jpg", class: "style-image card-img-top")%>
+    <% @space.each do |space| %>
+    <div class="card col-xs-12 col-sm-3 box" style="position: center;">
+      <div class="center-block">
+      <%= image_tag(space.images.first, class: "style-image card-img-top")%>
         <div class="card-block">
-          <h4 class="card-title">Name</h4>
-          <p class="card-text">workup guests</p>
-          <a href="#" class="btn btn-default">Go somewhere</a>
+          <h4 class="card-title"><%= space.name %></h4>
+          <!-- <p class="card-text"><%= space.description %></p> -->
+          <% space.bookings.each do |find| %>
+          <%= find.worker.email %>
+          <%end%>
+          <button type="button" class="btn btn-default" style="margin-bottom: 50px;">
+          <%= link_to('Find out more', space_path(space)) %>
+          </button>
         </div>
+      </div>
     </div>
-    <div class="card col-xs-12 col-sm-3 box">
+    <!-- <div class="card col-xs-12 col-sm-3 box">
       <%= image_tag("fairyresto.jpg", class: "style-image card-img-top")%>
         <div class="card-block">
           <h4 class="card-title">Name</h4>
@@ -82,7 +90,8 @@
 
           <a href="#" type="button" class="btn btn-default">Go somewhere</a>
         </div>
-    </div>
+    </div> -->
+    <%end%>
   </div>
   <div>
     <button type="button" class="btn btn-default" style="margin-bottom: 50px;">
@@ -91,6 +100,3 @@
   </div>
     <%= render 'partials/footer' %>
 </div>
-
-<!-- <%= unless @space.bookings.nil? || @space.bookings do |booking| %> -->
-<!--<%= booking.inspect %> -->
