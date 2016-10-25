@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161022234206) do
     t.datetime "updated_at",                          null: false
     t.string   "firstname"
     t.string   "lastname"
-    t.         "photo"
+    t.string   "photo"
     t.string   "job"
     t.index ["email"], name: "index_workers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_workers_on_reset_password_token", unique: true
